@@ -4,28 +4,46 @@ const desktopMenu = document.querySelector('.desktop-menu');
 const btnMobileMenu = document.querySelector('.menu');
 const mobileMenu = document.querySelector('.mobile-menu');
 const btnShoppingCar = document.querySelector('.navbar-shopping-cart');
-const aside = document.querySelector('.product-detail');
+const shoppingCartDetail = document.querySelector('.shopping-cart-detail');
 const cardsContainer = document.querySelector('.cards-container');
+const btnCloseProductDetail = document.querySelector('.product-detail-close');
+const productDetail = document.querySelector('.product-detail');
 
 navbarEmail.addEventListener('click', toggleSubMenuEmail);
 btnMobileMenu.addEventListener('click', showMobileMenu);
-btnShoppingCar.addEventListener('click', toggleAside);
+btnShoppingCar.addEventListener('click', toggleShoppingCart);
+btnCloseProductDetail.addEventListener('click', closeProductDetail);
 
 function toggleSubMenuEmail() {
-   aside.classList.remove('show-aside')
+   shoppingCartDetail.classList.remove('show-aside')
+   productDetail.classList.remove('show-aside');
    desktopMenu.classList.toggle('inactive');
 }
 
 function showMobileMenu() {
-   aside.classList.remove('show-aside')
+   shoppingCartDetail.classList.remove('show-aside')
+   productDetail.classList.remove('show-aside');
    mobileMenu.classList.toggle('show-mobile-menu')
 }
 
-function toggleAside() {
+function toggleShoppingCart() {
    desktopMenu.classList.add('inactive');
    mobileMenu.classList.remove('show-mobile-menu');
-   aside.classList.toggle('show-aside')
+   productDetail.classList.remove('show-aside');
+   shoppingCartDetail.classList.toggle('show-aside')
 }
+
+function showProductDetail() {
+   desktopMenu.classList.add('inactive');
+   mobileMenu.classList.remove('show-mobile-menu');
+   shoppingCartDetail.classList.remove('show-aside')
+   productDetail.classList.add('show-aside');
+}
+
+function closeProductDetail() {
+   productDetail.classList.remove('show-aside');
+}
+
 
 products = [
    {
@@ -61,6 +79,7 @@ function renderProducts(dataProducts) {
       const imgProduct = document.createElement('img');
       imgProduct.setAttribute('src', product.image);
       imgProduct.setAttribute('alt', `Imagen de ${product.name}`);
+      imgProduct.addEventListener('click', showProductDetail);
 
       const divProductInfo = document.createElement('div');
       divProductInfo.classList.add('product-info');
