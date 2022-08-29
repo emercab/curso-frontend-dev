@@ -1,7 +1,7 @@
 :root {
     --white: #FFFFFF;
     --black: #000000;
-    --very-light-pink: #C7C7C7;
+    --very-light-pink: #969696;
     --text-input-field: #F7F7F7;
     --hospital-green: #ACD9B2;
     --sm: 14px;
@@ -89,20 +89,23 @@ nav {
 }
 
 /* Sub menu Email */
-.inactive {
-  display: none;
-}
 .desktop-menu {
   position: absolute;
   top: 60px;
   right: 60px;
   width: 100px;
-  height: auto;
-  border: 1px solid var(--very-light-pink);
-  border-radius: 0 0 6px;
-  padding: 20px 20px 0 20px;
+  height: 0;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
   background-color: var(--white);
   box-shadow: 3px 3px 10px var(--very-light-pink);
+  transition: .4s;
+}
+.show-desktop-menu {
+  height: auto;
+  border: 1px solid var(--very-light-pink);
+  padding: 20px 20px 0 20px;
 }
 .desktop-menu ul {
   list-style: none;
@@ -178,7 +181,6 @@ nav {
   position: absolute;
   right: -100%;
   background-color: var(--white);
-  box-shadow: -3px 3px 10px var(--very-light-pink);
   transition: .4s right;
 }
 .title-container {
@@ -300,11 +302,11 @@ nav {
   position: absolute;
   right: -100%;
   background-color: var(--white);
-  box-shadow: -3px 3px 10px var(--very-light-pink);
-  transition: .4s right;
+  transition: .3s right;
 }
 .show-aside {
   right: 0;
+  box-shadow: -3px 3px 10px var(--very-light-pink);
 }
 .product-detail-close {
   background: var(--white);
